@@ -35,6 +35,10 @@ public class StringsMethods {
 
         System.out.println(name.indexOf("s",3));
 
+        System.out.println(name.equals("Yash Shrivastava"));
+        System.out.println(name.equals("yash shrivastava"));
+        System.out.println(name.equalsIgnoreCase("yasH sHrivAstavA"));
+
 
     }
 }
