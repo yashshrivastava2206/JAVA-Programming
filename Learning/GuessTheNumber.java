@@ -1,24 +1,35 @@
 import java.util.Random;
 import java.util.Scanner;
 
-import static jdk.vm.ci.sparc.SPARC.l1;
 
-class GuessNumber{
-    private int num;
+class Game {
     private int number;
+    private int num;
+    private int noOfGuess=0;
 
-    Scanner sc =new Scanner(System.in);
-    public GuessNumber(){
+    Game() {
         Random random = new Random();
-        num = random.nextInt(101);
-//        System.out.println(num);
+        number = random.nextInt(100);
+        System.out.println(number);
     }
-    public int takeInput(){
-        number = sc.nextInt();
-        return number;
+    void guessNumber(){
+        noOfGuess++;
+        Scanner sc = new Scanner(System.in);
+        this.num= sc.nextInt();
     }
-    public boolean isCorrectNumber(int n){
-
+    boolean isCorrectNumber(){
+        if(num==number){
+            System.out.println("No. is Guessed correctly in "+noOfGuess+" times ");
+            System.out.println("Right No. is "+num);
+            return true;
+        }
+        else if(num>number){
+            System.out.println("large no...");
+        }
+        else{
+            System.out.println("Small no...");
+        }
+        return false;
     }
 }
 public class GuessTheNumber {
@@ -31,16 +42,11 @@ public class GuessTheNumber {
         3. isCorrectNumber() to detect whether number entered by the user is true
         Use properties such as noOfGuesses(int), etc to get this task done .
         */
-        Scanner sc = new Scanner(System.in);
-        GuessNumber GS= new GuessNumber();
-        System.out.print("Guess a Number :");
-        int a=GS.takeInput();
-        if(GS.isCorrectNumber(a)){
-            System.out.println("Right Guess");
-        }
-        else{
-            a=GS.takeInput();
-            
+        Game guess = new Game();
+        boolean check= false;
+        while(!check){
+            guess.guessNumber();
+            check=guess.isCorrectNumber();
         }
     }
 }
