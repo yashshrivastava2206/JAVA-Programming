@@ -9,6 +9,8 @@ class Solution {
         long rem=-1;
         if(n==1)
         return true;
+        else if(n<0)
+            return false;
         while(n!=rem && n>rem){
             rem=(long)Math.pow(2,pow);
             pow++;
