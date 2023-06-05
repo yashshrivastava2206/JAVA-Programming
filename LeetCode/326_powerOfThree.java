@@ -3,18 +3,22 @@ Given an integer n, return true if it is a power of three. Otherwise, return fal
 
 An integer n is a power of three, if there exists an integer x such that n == 3x.
 */
-bool isPowerOfThree(int n){
-        int p=1;
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        int pow=1;
         long rem=-1;
         if(n==1)
         return true;
         else if(n<0)
         return false;
         while(n!=rem && n>rem){
-            rem=pow(3,p);
-            p++;
+            rem=(long)Math.pow(3,pow);
+            
+            pow++;
         }
         if(rem==n)
            {return true;}
+         
         return false;
+    }
 }
