@@ -1,0 +1,37 @@
+/*
+Given an integer numRows, return the first numRows of Pascal's triangle.
+*/
+class Solution {
+    static int binomialCoeff(int n, int k)
+    {
+        int res = 1;
+          
+        if (k > n - k)
+        k = n - k;
+              
+        for (int i = 0; i < k; ++i)
+        {
+            res *= (n - i);
+            res /= (i + 1);
+        }
+        return res;
+    }
+    
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result=new ArrayList<>();
+        for (int line = 0; line < numRows; line++)
+    {
+        List<Integer> lst=new ArrayList<>();
+
+        for (int i = 0; i <= line; i++){
+            
+         lst.add(binomialCoeff(line, i));
+
+        }
+                          
+        result.add(new ArrayList(lst));
+        lst.clear();
+    }
+    return result;
+    }
+}
