@@ -1,6 +1,28 @@
 /*
 Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 */
+
+//Solution 1
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map= new HashMap<>();
+        List<Integer> list = new ArrayList<>();
+        int size =nums.length;
+        int major=size/3;
+        for(int i=0;i<size;i++){
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        }
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            int key=entry.getKey();
+            int value=entry.getValue();
+            if(value>major)
+            list.add(key);
+        }
+        return list;
+    }
+}
+
+//Solution 2
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> list = new ArrayList<>();
